@@ -4,10 +4,7 @@ const questionForm = document.querySelector('#questionForm');
 
 const fetchBtn = document.querySelector('#fetchBtn');
 //fetchBtn.disabled = true;
-
 questionForm.addEventListener('submit', handleQuestionInput);
-
-
 
 function handleQuestionInput(event) {
     event.preventDefault();
@@ -18,7 +15,7 @@ function handleQuestionInput(event) {
 
     const url = `https://opentdb.com/api.php?amount=${amountOfQuestions}&category=${userSubject}&difficulty=${userDifficulty}&type=multiple`;
     fetch(url).then(response => response.json()).then(displayQuestions)
-        // .catch(displayError);
+    // .catch(displayError);
 
     questionForm.reset();
 }
@@ -49,14 +46,25 @@ function displayQuestions(questions) {
         console.log(question.incorrect_answers);
         console.log(question.correct_answer);
 
-        /*const wrongRadioEl = document.createElement('radio');
-        wrongRadioEl.innerText = question.incorrect_answers;
+        const allAnswers = [question.incorrect_answers[0],
+        question.incorrect_answers[1],
+        question.incorrect_answers[2],
+        question.correct_answer];
+        allAnswers.sort(() => Math.random() - 0.5);
 
-        const rightRadioEl = document.createElement('radio');
-        rightRadioEl.innerText = question.correct_answer;
+        for (const answer of allAnswers) {
+            const radioContainer = document.createElement('div');
 
-        questionDiv.appendChild(wrongRadioEl);
-        questionDiv.appendChild(rightRadioEl);*/
+            const radioEl = document.createElement('input');
+            radioEl.type = 'radio';
+            radioEl.name = question.question;
+            radioEl.value = answer;
+
+            const labelEl = document.createElement('label');
+            labelEl.innerText = answer;
+
+            radioContainer.append(radioEl, labelEl);
+            questionDiv.appendChild(radioContainer);
+        }
     }
-
 }

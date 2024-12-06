@@ -13,10 +13,9 @@
     <div id="bigFrom">
         <form id="questionForm">
             <h1>Trivia</h1>
-            <h2>How many questions do you want to answer?</h2>
-            <input type="number" placeholder="0-50" min="0" max="50">
-            <label for="subject">Choose a subject:</label>
-                <select name="subject" id="subject">
+            <h2>Choose a category, difficulty and number of questions to get started.</h2>
+            <label for="subject">Choose a category:</label>
+            <select name="subject" id="subject">
                     <option value="9">General knowledge</option>
                     <option value="21">Sports</option>
                     <option value="22">Geography</option>
@@ -27,6 +26,7 @@
                 <option value="medium">Medium</option>
                 <option value="hard">Hard</option>
             </select>
+            Amount: <input type="number" placeholder="1-50" min="1" max="50">
             <button id="fetchBtn">Get questions!</button>
         </form>
         <div id="questionContainer"></div>
