@@ -1,9 +1,42 @@
-*{
+* {
     box-sizing: border-box;
 }
-#bigForm{
-    height: 100vh;
+
+#bigForm {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+#questionForm {
+    text-align: center;
+}
+
+#bigForm .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#bigForm #resetBtn,
+#bigForm #submitBtn {
     justify-content: center;
     align-items: center;
+    padding: 10px 20px;
+    border: 2px solid hsl(0, 0%, 80%);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
 }
