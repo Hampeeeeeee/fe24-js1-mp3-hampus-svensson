@@ -1,7 +1,8 @@
-let amountOfQuestions = 0, correctGuesses = 0;
+let amountOfQuestions = 0, correctGuesses = 0, correctAnswers = [];
 
 const questionForm = document.querySelector('#questionForm');
 const questionPrompt = document.querySelector('#questionHidden');
+const result = document.querySelector('#resultPopup');
 const fetchBtn = document.querySelector('#fetchBtn');
 const resetBtn = document.querySelector('#resetBtn');
 const submitBtn = document.querySelector('#submitBtn');
@@ -64,6 +65,8 @@ function displayQuestions(questions) {
                             question.correct_answer];
         allAnswers.sort(() => Math.random() - 0.5);
 
+        correctAnswers.push(question.correct_answer);
+
         for (const answer of allAnswers) {
             const radioContainer = document.createElement('p');
 
@@ -80,8 +83,42 @@ function displayQuestions(questions) {
         }
 
         questionContainer.appendChild(questionDiv);
-
     }
+    
+}
+
+submitBtn.addEventListener('click', userAnswers);
+
+function userAnswers() {
+    submitBtn.disabled = true;
+
+    const questionContainer = document.querySelector('#questionContainer');
+    const questions = questionContainer.querySelectorAll('div');
+
+    questions.forEach((questionDiv, index) => {
+        const selectedAnswer = questionDiv.querySelector('input[type="radio"]:checked');
+        let feedbackDiv = document.querySelector('#feedback');
+
+        feedbackDiv = document.createElement('h2');
+
+        if (selectedAnswer) {
+            const userAnswer = selectedAnswer.value;
+
+            if (userAnswer === correctAnswers[index]) {
+                correctGuesses++;
+                feedbackDiv.innerText = 'Correct!';
+                feedbackDiv.classList.add('correct')
+            }
+            else {
+                feedbackDiv.innerText = `Incorrect! Correct answer: ${correctAnswers[index]}`;
+                feedbackDiv.classList.add('incorrect')
+            }
+        }
+        questionDiv.appendChild(feedbackDiv);
+    });
+
+    result.innerText = `Score: You answered ${correctGuesses} out of ${amountOfQuestions} correctly! Click "Reset trivia" to play again.`;
+    //console.log(`Score: You scored ${correctGuesses} out of ${amountOfQuestions}`);
 }
 
 resetBtn.addEventListener('click', resetGame);
@@ -89,6 +126,7 @@ resetBtn.addEventListener('click', resetGame);
 function resetGame() {
     amountOfQuestions = 0;
     correctGuesses = 0;
+    correctAnswers = [];
     
     questionForm.classList.remove('hidden');
     questionPrompt.classList.remove('visible');
@@ -98,5 +136,8 @@ function resetGame() {
     const questionContainer = document.querySelector('#questionContainer');
     questionContainer.innerHTML = '';
 
+    result.innerHTML = '';
+    
+    submitBtn.disabled = false;
     console.clear();
 }

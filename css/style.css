@@ -1,7 +1,9 @@
 * {
     box-sizing: border-box;
 }
-
+body {
+    background-color: wheat;
+}
 #bigForm {
     display: flex;
     flex-direction: column;
@@ -10,10 +12,21 @@
 
 h1 {
     text-align: center;
+    border-radius: 5px;
+    background-color: antiquewhite;
 }
 
 #questionForm {
     text-align: center;
+    background-color: antiquewhite;
+    border-radius: 5px;
+}
+
+#questionContainer h2{
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    background-color: antiquewhite;
 }
 
 #bigForm .button-container {
@@ -39,4 +52,12 @@ h1 {
 
 .visible {
     display: block;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
 }
