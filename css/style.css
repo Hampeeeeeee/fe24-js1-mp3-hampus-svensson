@@ -1,13 +1,21 @@
 * {
     box-sizing: border-box;
 }
+
 body {
     background-color: wheat;
 }
+
 #bigForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+#questionHidden {
+    text-align: center;
+    border-radius: 5px;
+    background-color: antiquewhite;
 }
 
 h1 {
@@ -22,11 +30,15 @@ h1 {
     border-radius: 5px;
 }
 
-#questionContainer h2{
+#questionContainer h2 {
     text-align: center;
     border-radius: 5px;
-    margin-top: 20px;
     background-color: antiquewhite;
+}
+
+#questionContainer h3 {
+    background-color: antiquewhite;
+    border-radius: 5px;
 }
 
 #bigForm .button-container {
