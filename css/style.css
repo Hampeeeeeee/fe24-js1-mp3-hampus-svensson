@@ -24,16 +24,27 @@ h1 {
     background-color: antiquewhite;
 }
 
+p {
+    font-size: 1.4rem;
+}
+
 #questionForm {
     text-align: center;
-    background-color: antiquewhite;
     border-radius: 5px;
+    background-color: antiquewhite;
+    
+}
+
+#selectForm {
+    font-weight: 700;
+    font-size: 20px;
 }
 
 #questionContainer h2 {
     text-align: center;
     border-radius: 5px;
     background-color: antiquewhite;
+    border: 2px solid hsl(33, 100%, 80%);   
 }
 
 #questionContainer h3 {
@@ -41,7 +52,7 @@ h1 {
     border-radius: 5px;
 }
 
-#bigForm .button-container {
+#bigForm #buttonContainer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,7 +64,8 @@ h1 {
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
-    border: 2px solid hsl(0, 0%, 80%);
+    background-color: antiquewhite;
+    border: 2px solid hsl(33, 100%, 80%);
     border-radius: 5px;
     cursor: pointer;
 }

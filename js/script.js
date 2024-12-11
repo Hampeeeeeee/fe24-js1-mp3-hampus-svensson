@@ -1,3 +1,4 @@
+// Variables declared.
 let amountOfQuestions = 0, correctGuesses = 0, correctAnswers = [];
 
 const questionForm = document.querySelector('#questionForm');
@@ -7,8 +8,9 @@ const fetchBtn = document.querySelector('#fetchBtn');
 const resetBtn = document.querySelector('#resetBtn');
 const submitBtn = document.querySelector('#submitBtn');
 
+// eventListener for submit to run the function below
 questionForm.addEventListener('submit', handleQuestionInput);
-
+// Function handling input.
 function handleQuestionInput(event) {
     event.preventDefault();
     amountOfQuestions = questionForm.querySelector('input').value;
@@ -30,12 +32,12 @@ function handleQuestionInput(event) {
     submitBtn.classList.add('visible');
     questionForm.reset();
 }
-
+// Function displaying errors if they appear.
 function displayError(error) {
     const errorP = document.querySelector('#errorMessage');
     errorP.innerText = error;
 }
-
+// displayQuestions runs last in the fetching of the API. Random questions along with their respective answers show up in the DOM.
 function displayQuestions(questions) {
     console.log(questions.results);
 
@@ -51,7 +53,7 @@ function displayQuestions(questions) {
         const questionDiv = document.createElement('div');
 
         const h3 = document.createElement('h3');
-        h3.innerText = `${i + 1}. ${question.question}`;
+        h3.innerHTML = `${i + 1}. ${question.question}`;
         questionDiv.appendChild(h3);
 
         document.body.append(questionDiv);
@@ -73,10 +75,12 @@ function displayQuestions(questions) {
             const radioEl = document.createElement('input');
             radioEl.type = 'radio';
             radioEl.name = question.question;
+            radioEl.id = answer;
             radioEl.value = answer;
 
             const labelEl = document.createElement('label');
-            labelEl.innerText = answer;
+            labelEl.setAttribute('for', radioEl.id);
+            labelEl.innerHTML = answer;
 
             radioContainer.append(radioEl, labelEl);
             questionDiv.appendChild(radioContainer);
@@ -86,9 +90,9 @@ function displayQuestions(questions) {
     }
     
 }
-
+// eventListener for 'click', and then userAnswers runs.
 submitBtn.addEventListener('click', userAnswers);
-
+// Handles the answers of the user and checks if correct. Spits out feedback and the correct answers if guessed incorrectly.
 function userAnswers() {
     submitBtn.disabled = true;
 
@@ -122,7 +126,7 @@ function userAnswers() {
 }
 
 resetBtn.addEventListener('click', resetGame);
-
+// Resets the game when pressing the reset button.
 function resetGame() {
     amountOfQuestions = 0;
     correctGuesses = 0;

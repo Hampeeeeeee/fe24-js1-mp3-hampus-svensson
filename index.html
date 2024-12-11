@@ -15,26 +15,28 @@
         <h2 class="hidden" id="questionHidden">Your questions:</h2>
         <form id="questionForm">
             <h2>Choose a category, difficulty and number of questions to get started.</h2>
-            <label for="subject">Choose a category:</label>
-            <select name="subject" id="subject">
-                <option value="9">General knowledge</option>
-                <option value="21">Sports</option>
-                <option value="22">Geography</option>
-            </select>
-            <label for="difficulties">Choose a difficulty:</label>
-            <select name="diffculties" id="difficulties">
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-            </select>
-            Amount: <input type="number" placeholder="1-50" min="1" max="50">
-            <button id="fetchBtn">Get questions!</button>
+            <div id="selectForm">
+                <label for="subject">Choose a category:</label>
+                <select name="subject" id="subject">
+                    <option value="9">General knowledge</option>
+                    <option value="21">Sports</option>
+                    <option value="22">Geography</option>
+                </select>
+                <label for="difficulties">Choose a difficulty:</label>
+                <select name="diffculties" id="difficulties">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                Amount: <input type="number" id="amount" placeholder="1-50" min="1" max="50">
+                <button id="fetchBtn">Get questions!</button>
+            </div>
         </form>
         <div id="questionContainer">
             <h3 id="feedback"></h3>
         </div>
         <h1 id="resultPopup"></h1>
-        <div class="button-container">
+        <div id="buttonContainer">
             <button class="hidden" id="submitBtn" type="submit">Submit answers</button>
             <button class="hidden" id="resetBtn" type="reset">Reset trivia</button>
         </div>
